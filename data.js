@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       row.innerHTML = `
         <td>${pkg.name}</td>
-        <td>${pkg.operator}</td>
         <td>${pkg.duration}</td>
         <td>${pkg.price}</td>
         <td><bdo dir="ltr">${pkg.ussd}</bdo></td>
