@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("Vazirmatn-Regular.ttf") format("truetype");
+}
+
+body {
+  direction: rtl;
+  font-family: "Vazirmatn", sans-serif;
+  text-align: center;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* استایل عنوان اصلی سایت */
+.site-title {
+  font-size: 3rem; /* اندازه بزرگ عنوان */
+  font-weight: bold;
+  margin-top: 20vh; /* فاصله از بالا برای وسط‌چینی عمودی */
+  color: #007bff; /* رنگ دلخواه عنوان */
+}
+
+/* استایل زیرعنوان سایت */
+.site-subtitle {
+  font-size: 1.5rem; /* اندازه کوچک‌تر برای زیرعنوان */
+  margin-top: 10px; /* فاصله از عنوان */
+  color: #555; /* رنگ خاکستری برای زیرعنوان */
+}
+
+/* استایل نوار فیلتر */
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filters select {
+  padding: 8px;
+  margin: 0 10px;
+  font-size: 1rem;
+  font-family: Vazirmatn;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* استایل جدول */
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* دکمه خرید */
+.buy-button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* تغییر رنگ متن بسته‌های رایتل به سفید */
+.tr-raitel td {
+  color: white !important;
+}
+
+.details-button {
+  background-color: #007bff; /* رنگ آبی */
+  color: white; /* رنگ متن سفید */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: Vazirmatn;
+  transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+  background-color: #0056b3; /* تغییر رنگ در حالت هاور */
+}
+
+/* استایل کپی‌رایت */
+.footer {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 30px;
+}

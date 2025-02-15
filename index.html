@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بسته باز</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- عنوان اصلی سایت -->
+    <h1 class="site-title">بسته باز</h1>
+    <p class="site-subtitle">
+      همه بسته‌های اینترنتی اپراتورهای همراه در یک نگاه
+    </p>
+
+    <!-- نوار فیلتر -->
+    <div class="filters">
+      <select id="operator-filter">
+        <option value="">اپراتور</option>
+        <option value="همراه اول">همراه اول</option>
+        <option value="ایرانسل">ایرانسل</option>
+        <option value="رایتل">رایتل</option>
+      </select>
+
+      <select id="price-filter">
+        <option value="">قیمت</option>
+        <option value="5000">کمتر از ۱۰,۰۰۰ تومان</option>
+        <option value="20000">بین ۱۰,۰۰۰ تا ۳۰,۰۰۰ تومان</option>
+        <option value="45000">بیشتر از ۳۰,۰۰۰ تومان</option>
+      </select>
+
+      <select id="duration-filter">
+        <option value="">مدت</option>
+        <option value="1">روزانه</option>
+        <option value="7">هفتگی</option>
+        <option value="30">ماهانه</option>
+      </select>
+
+      <select id="data-filter">
+        <option value="">حجم</option>
+        <option value="1">1 گیگ</option>
+        <option value="5">5 گیگ</option>
+        <option value="10">10 گیگ</option>
+      </select>
+    </div>
+
+    <!-- عنوان جدول بسته‌ها -->
+    <h2>جدول بسته‌های اینترنتی</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>نام بسته</th>
+          <th>اپراتور</th>
+          <th>مدت</th>
+          <th>قیمت</th>
+          <th>کد دستوری</th>
+          <th>لینک خرید</th>
+          <th>جزئیات</th>
+        </tr>
+      </thead>
+      <tbody id="package-table"></tbody>
+    </table>
+
+    <!-- بخش کپی‌رایت -->
+    <footer class="footer">
+      <p>&copy; تمامی حقوق برای بسته باز محفوظ است.</p>
+    </footer>
+
+    <!-- فایل جاوااسکریپت -->
+    <script src="data.js"></script>
+  </body>
+</html>
