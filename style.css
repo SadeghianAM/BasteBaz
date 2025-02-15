@@ -115,8 +115,7 @@ tr:nth-child(even) {
 
 /* استایل کپی‌رایت */
 .footer {
-  background-color: gray;
-  color: white;
+  color: #555;
   padding: 10px;
   text-align: center;
   margin-top: 30px;
@@ -196,7 +195,8 @@ tr:nth-child(even) {
   }
 
   th:last-child, /* حذف عنوان ستون */
-  td:last-child { /* حذف محتوای ستون */
+  td:last-child {
+    /* حذف محتوای ستون */
     display: none;
   }
 }
