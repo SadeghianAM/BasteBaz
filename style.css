@@ -1,3 +1,4 @@
+/* فونت اختصاصی */
 @font-face {
   font-family: "Vazirmatn";
   src: url("Vazirmatn-Regular.ttf") format("truetype");
@@ -14,25 +15,24 @@ body {
 
 /* استایل عنوان اصلی سایت */
 .site-title {
-  font-size: 3rem; /* اندازه بزرگ عنوان */
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 20vh; /* فاصله از بالا برای وسط‌چینی عمودی */
-  color: #007bff; /* رنگ دلخواه عنوان */
+  margin-top: 20vh;
+  color: #007bff;
 }
 
 /* استایل زیرعنوان سایت */
 .site-subtitle {
-  font-size: 1.5rem; /* اندازه کوچک‌تر برای زیرعنوان */
-  margin-top: 10px; /* فاصله از عنوان */
-  color: #555; /* رنگ خاکستری برای زیرعنوان */
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #555;
 }
 
 /* استایل نوار فیلتر */
 .filters {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .filters select {
@@ -87,9 +87,10 @@ tr:nth-child(even) {
   color: white !important;
 }
 
+/* دکمه جزئیات */
 .details-button {
-  background-color: #007bff; /* رنگ آبی */
-  color: white; /* رنگ متن سفید */
+  background-color: #007bff;
+  color: white;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
@@ -100,7 +101,7 @@ tr:nth-child(even) {
 }
 
 .details-button:hover {
-  background-color: #0056b3; /* تغییر رنگ در حالت هاور */
+  background-color: #0056b3;
 }
 
 /* استایل کپی‌رایت */
@@ -110,4 +111,79 @@ tr:nth-child(even) {
   padding: 10px;
   text-align: center;
   margin-top: 30px;
+}
+
+/* استایل مودال */
+.modal {
+  display: none; /* به صورت پیش‌فرض مخفی */
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* پس‌زمینه نیمه شفاف */
+}
+
+.modal-content {
+  background: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  position: relative;
+  border-radius: 8px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Media Query برای دستگاه‌های با عرض کمتر از 768px */
+@media (max-width: 768px) {
+  /* کاهش اندازه عنوان اصلی و تغییر فاصله از بالا */
+  .site-title {
+    font-size: 2.5rem;
+    margin-top: 15vh;
+  }
+
+  /* کاهش اندازه زیرعنوان */
+  .site-subtitle {
+    font-size: 1.2rem;
+  }
+
+  /* تغییر جهت چینش فیلترها به عمودی */
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters select {
+    margin: 10px 0;
+    width: 90%;
+  }
+
+  /* تنظیم اندازه جدول */
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  /* تنظیم اندازه مودال */
+  .modal-content {
+    width: 90%;
+    margin: 30% auto;
+  }
 }

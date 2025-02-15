@@ -48,7 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showDetails(packageName) {
     const pkg = packages.find((p) => p.name === packageName);
-    alert(pkg.details);
+    const modal = document.getElementById("details-modal");
+    const detailsText = document.getElementById("details-text");
+
+    // قرار دادن جزئیات بسته درون تگ <p>
+    detailsText.textContent = pkg.details;
+    // نمایش مودال
+    modal.style.display = "block";
   }
 
   function filterPackages() {
@@ -58,15 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = dataFilter.value;
 
     const filteredPackages = packages.filter((pkg) => {
+      const pkgPrice = parseInt(pkg.price.replace(" تومان", ""));
       const matchesOperator = operator ? pkg.operator === operator : true;
       const matchesPrice =
         price === "5000"
-          ? parseInt(pkg.price.replace(" تومان", "")) < 10000
+          ? pkgPrice < 10000
           : price === "20000"
-          ? parseInt(pkg.price.replace(" تومان", "")) >= 10000 &&
-            parseInt(pkg.price.replace(" تومان", "")) <= 30000
+          ? pkgPrice >= 10000 && pkgPrice <= 30000
           : price === "45000"
-          ? parseInt(pkg.price.replace(" تومان", "")) > 30000
+          ? pkgPrice > 30000
           : true;
       const matchesDuration = duration
         ? parseInt(pkg.duration.split(" ")[0]) === parseInt(duration)
@@ -96,21 +102,36 @@ document.addEventListener("DOMContentLoaded", function () {
       tableBody.appendChild(row);
     });
 
-    // افزودن رویداد به دکمه‌ها
+    // افزودن رویداد به دکمه‌های جزئیات
     const detailsButtons = document.querySelectorAll(".details-button");
     detailsButtons.forEach((button) => {
       button.addEventListener("click", function () {
-        showDetails(button.dataset.id); // نمایش جزئیات بسته
+        showDetails(button.dataset.id);
       });
     });
   }
 
-  // فراخوانی تابع فیلتر کردن بسته‌ها هنگام تغییر هر فیلتر
+  // رویدادهای تغییر فیلترها
   operatorFilter.addEventListener("change", filterPackages);
   priceFilter.addEventListener("change", filterPackages);
   durationFilter.addEventListener("change", filterPackages);
   dataFilter.addEventListener("change", filterPackages);
 
-  // بارگذاری اولیه بسته‌ها
+  // نمایش اولیه بسته‌ها
   filterPackages();
+
+  // بستن مودال با کلیک روی دکمه بستن (×)
+  document
+    .querySelector(".modal .close")
+    .addEventListener("click", function () {
+      document.getElementById("details-modal").style.display = "none";
+    });
+
+  // بستن مودال با کلیک روی فضای خارج از محتوا
+  window.addEventListener("click", function (event) {
+    const modal = document.getElementById("details-modal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 });
