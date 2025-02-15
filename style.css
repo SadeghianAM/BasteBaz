@@ -37,6 +37,8 @@ body {
   color: #555;
   margin-top: 10px;
   text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* استایل نوار فیلتر */
@@ -102,23 +104,6 @@ tr:nth-child(even) {
 /* تغییر رنگ متن بسته‌های رایتل به سفید */
 .tr-raitel td {
   color: white !important;
-}
-
-/* دکمه جزئیات */
-.details-button {
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-family: "IRANYekanX";
-  transition: background-color 0.3s ease;
-}
-
-.details-button:hover {
-  background-color: #0056b3;
 }
 
 /* استایل کپی‌رایت */
@@ -198,9 +183,21 @@ tr:nth-child(even) {
     margin: 20% auto;
   }
 
-  /* حذف ستون اپراتور */
-  th:nth-child(2),
-  td:nth-child(2) {
+  /* پنهان کردن ستون کد دستوری */
+  th:nth-child(3),
+  td:nth-child(3) {
     display: none;
+  }
+
+  /* پنهان کردن ستون لینک خرید */
+  th:nth-child(4),
+  td:nth-child(4) {
+    display: none;
+  }
+
+  /* نمایش دادن ستون قیمت */
+  th:nth-child(5),
+  td:nth-child(5) {
+    display: table-cell; /* مطمئن شوید که ستون قیمت در موبایل قابل مشاهده است */
   }
 }

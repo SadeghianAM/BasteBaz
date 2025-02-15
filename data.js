@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const packages = [
     {
-      name: "بسته ۱ گیگ روزانه",
+      name: "۶۰ مگابایت یک‌روزه",
       operator: "همراه اول",
       duration: "۱ روز",
-      price: "۵۰۰۰ تومان",
+      price: "2,140 تومان",
       ussd: "*۱۰۰*۱#",
       link: "#",
       data: 1,
@@ -92,11 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       row.innerHTML = `
         <td>${pkg.name}</td>
-        <td>${pkg.duration}</td>
         <td>${pkg.price}</td>
         <td><bdo dir="ltr">${pkg.ussd}</bdo></td>
         <td><a href="${pkg.link}" class="buy-button">خرید</a></td>
-        <td><button class="details-button" data-id="${pkg.name}">توضیحات</button></td>
       `;
       tableBody.appendChild(row);
     });
