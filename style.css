@@ -167,6 +167,10 @@ tr:nth-child(even) {
     font-size: 1rem;
   }
 
+  .details-button {
+    display: none;
+  }
+
   .filters {
     flex-direction: column;
     align-items: center;
@@ -189,5 +193,10 @@ tr:nth-child(even) {
   .modal-content {
     width: 90%;
     margin: 20% auto;
+  }
+
+  th:last-child, /* حذف عنوان ستون */
+  td:last-child { /* حذف محتوای ستون */
+    display: none;
   }
 }
