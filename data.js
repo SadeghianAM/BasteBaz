@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${pkg.price}</td>
         <td><bdo dir="ltr">${pkg.ussd}</bdo></td>
         <td><a href="${pkg.link}" class="buy-button">خرید</a></td>
-        <td><button class="details-button" data-id="${pkg.name}">نمایش جزئیات بیشتر</button></td>
+        <td><button class="details-button" data-id="${pkg.name}">توضیحات</button></td>
       `;
       tableBody.appendChild(row);
     });

@@ -174,10 +174,6 @@ tr:nth-child(even) {
     font-size: 1rem;
   }
 
-  .details-button {
-    display: none;
-  }
-
   .filters {
     flex-direction: column;
     align-items: center;
@@ -202,9 +198,9 @@ tr:nth-child(even) {
     margin: 20% auto;
   }
 
-  th:last-child, /* حذف عنوان ستون */
-  td:last-child {
-    /* حذف محتوای ستون */
+  /* حذف ستون اپراتور */
+  th:nth-child(2),
+  td:nth-child(2) {
     display: none;
   }
 }
