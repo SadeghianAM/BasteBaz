@@ -1,4 +1,3 @@
-/* فونت اختصاصی */
 @font-face {
   font-family: "IRANYekanX";
   src: url("fonts/IRANYekanX-Regular.woff2") format("woff2"),
@@ -16,7 +15,6 @@ body {
   padding: 0;
 }
 
-/* استایل عنوان اصلی سایت */
 .site-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -24,14 +22,12 @@ body {
   color: #007bff;
 }
 
-/* استایل زیرعنوان سایت */
 .site-subtitle {
   font-size: 1.2rem;
   margin-top: 10px;
   color: #555;
 }
 
-/* استایل نکته اضافه شده */
 .note {
   font-size: 1rem;
   color: #555;
@@ -41,7 +37,6 @@ body {
   padding-right: 20px;
 }
 
-/* استایل نوار فیلتر */
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -61,7 +56,6 @@ body {
   border-radius: 5px;
 }
 
-/* استایل جدول */
 table {
   width: 100%;
   max-width: 90%;
@@ -88,7 +82,10 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* دکمه خرید */
+.package-name {
+  cursor: pointer;
+}
+
 .buy-button {
   background-color: red;
   color: white;
@@ -101,12 +98,10 @@ tr:nth-child(even) {
   display: inline-block;
 }
 
-/* تغییر رنگ متن بسته‌های رایتل به سفید */
 .tr-raitel td {
   color: white !important;
 }
 
-/* استایل کپی‌رایت */
 .footer {
   color: #555;
   padding: 10px;
@@ -114,7 +109,6 @@ tr:nth-child(even) {
   margin-top: 30px;
 }
 
-/* استایل مودال */
 .modal {
   display: none;
   position: fixed;
@@ -148,7 +142,14 @@ tr:nth-child(even) {
   cursor: pointer;
 }
 
-/* Media Query برای دستگاه‌های کوچک‌تر */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: table-cell;
+}
+
 @media (max-width: 768px) {
   .site-title {
     font-size: 2rem;
@@ -170,7 +171,6 @@ tr:nth-child(even) {
 
   table {
     font-size: 0.9rem;
-    overflow-x: auto;
   }
 
   th,
@@ -183,21 +183,11 @@ tr:nth-child(even) {
     margin: 20% auto;
   }
 
-  /* پنهان کردن ستون کد دستوری */
-  th:nth-child(3),
-  td:nth-child(3) {
+  .desktop-only {
     display: none;
   }
 
-  /* پنهان کردن ستون لینک خرید */
-  th:nth-child(4),
-  td:nth-child(4) {
-    display: none;
-  }
-
-  /* نمایش دادن ستون قیمت */
-  th:nth-child(5),
-  td:nth-child(5) {
-    display: table-cell; /* مطمئن شوید که ستون قیمت در موبایل قابل مشاهده است */
+  .mobile-only {
+    display: block;
   }
 }

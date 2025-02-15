@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // رنگ‌های سازمانی اپراتورها
   const operatorColors = {
     "همراه اول": "#54C5D0",
     ایرانسل: "#FEBE10",
@@ -40,20 +39,32 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const tableBody = document.getElementById("package-table");
-
   const operatorFilter = document.getElementById("operator-filter");
   const priceFilter = document.getElementById("price-filter");
   const durationFilter = document.getElementById("duration-filter");
   const dataFilter = document.getElementById("data-filter");
 
-  function showDetails(packageName) {
-    const pkg = packages.find((p) => p.name === packageName);
+  function showDetails(pkg) {
     const modal = document.getElementById("details-modal");
     const detailsText = document.getElementById("details-text");
+    const mobileActions = document.getElementById("mobile-actions");
+    const ussdCode = mobileActions.querySelector(".ussd-code");
+    const buyButtonContainer = mobileActions.querySelector(
+      ".buy-button-container"
+    );
 
-    // قرار دادن جزئیات بسته درون تگ <p>
+    // نمایش جزئیات
     detailsText.textContent = pkg.details;
-    // نمایش مودال
+
+    // نمایش اطلاعات اضافی در نسخه موبایل
+    if (window.innerWidth <= 768) {
+      ussdCode.innerHTML = `کد دستوری: <bdo dir="ltr">${pkg.ussd}</bdo>`;
+      buyButtonContainer.innerHTML = `<a href="${pkg.link}" class="buy-button">خرید</a>`;
+    } else {
+      ussdCode.innerHTML = "";
+      buyButtonContainer.innerHTML = "";
+    }
+
     modal.style.display = "block";
   }
 
@@ -64,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = dataFilter.value;
 
     const filteredPackages = packages.filter((pkg) => {
-      const pkgPrice = parseInt(pkg.price.replace(" تومان", ""));
+      const pkgPrice = parseInt(pkg.price.replace(/[^0-9]/g, ""));
       const matchesOperator = operator ? pkg.operator === operator : true;
       const matchesPrice =
         price === "5000"
@@ -83,52 +94,65 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     tableBody.innerHTML = "";
+
     filteredPackages.forEach((pkg) => {
       const row = document.createElement("tr");
       row.style.backgroundColor = operatorColors[pkg.operator] || "#ffffff";
+
       if (pkg.operator === "رایتل") {
         row.classList.add("tr-raitel");
       }
 
-      row.innerHTML = `
-        <td>${pkg.name}</td>
-        <td>${pkg.price}</td>
-        <td><bdo dir="ltr">${pkg.ussd}</bdo></td>
-        <td><a href="${pkg.link}" class="buy-button">خرید</a></td>
-      `;
-      tableBody.appendChild(row);
-    });
+      // ایجاد سلول نام بسته با قابلیت کلیک
+      const nameCell = document.createElement("td");
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "package-name";
+      nameSpan.textContent = pkg.name;
+      nameSpan.onclick = () => showDetails(pkg);
+      nameCell.appendChild(nameSpan);
 
-    // افزودن رویداد به دکمه‌های جزئیات
-    const detailsButtons = document.querySelectorAll(".details-button");
-    detailsButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        showDetails(button.dataset.id);
-      });
+      // اضافه کردن سایر سلول‌ها
+      const priceCell = document.createElement("td");
+      priceCell.textContent = pkg.price;
+
+      const ussdCell = document.createElement("td");
+      ussdCell.className = "desktop-only";
+      ussdCell.innerHTML = `<bdo dir="ltr">${pkg.ussd}</bdo>`;
+
+      const linkCell = document.createElement("td");
+      linkCell.className = "desktop-only";
+      linkCell.innerHTML = `<a href="${pkg.link}" class="buy-button">خرید</a>`;
+
+      // اضافه کردن همه سلول‌ها به ردیف
+      row.appendChild(nameCell);
+      row.appendChild(priceCell);
+      row.appendChild(ussdCell);
+      row.appendChild(linkCell);
+
+      tableBody.appendChild(row);
     });
   }
 
-  // رویدادهای تغییر فیلترها
+  // اضافه کردن event listeners
   operatorFilter.addEventListener("change", filterPackages);
   priceFilter.addEventListener("change", filterPackages);
   durationFilter.addEventListener("change", filterPackages);
   dataFilter.addEventListener("change", filterPackages);
 
-  // نمایش اولیه بسته‌ها
-  filterPackages();
-
-  // بستن مودال با کلیک روی دکمه بستن (×)
+  // بستن مودال
   document
     .querySelector(".modal .close")
     .addEventListener("click", function () {
       document.getElementById("details-modal").style.display = "none";
     });
 
-  // بستن مودال با کلیک روی فضای خارج از محتوا
   window.addEventListener("click", function (event) {
     const modal = document.getElementById("details-modal");
     if (event.target === modal) {
       modal.style.display = "none";
     }
   });
+
+  // نمایش اولیه بسته‌ها
+  filterPackages();
 });

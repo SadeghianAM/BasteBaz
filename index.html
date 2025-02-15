@@ -7,19 +7,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- عنوان اصلی سایت -->
     <h1 class="site-title">بسته باز</h1>
     <p class="site-subtitle">
       همه بسته‌های اینترنتی اپراتورهای همراه ایران در یک نگاه
     </p>
 
-    <!-- نکته اضافه شده -->
     <p class="note">
       بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده
       شده‌اند.
     </p>
 
-    <!-- نوار فیلتر -->
     <div class="filters">
       <select id="operator-filter">
         <option value="">اپراتور</option>
@@ -50,30 +47,31 @@
       </select>
     </div>
 
-    <!-- عنوان جدول بسته‌ها -->
     <h2>جدول بسته‌های اینترنتی</h2>
     <table>
       <thead>
         <tr>
           <th>نام بسته</th>
           <th>قیمت</th>
-          <th>کد دستوری</th>
-          <th>لینک خرید</th>
+          <th class="desktop-only">کد دستوری</th>
+          <th class="desktop-only">لینک خرید</th>
         </tr>
       </thead>
       <tbody id="package-table"></tbody>
     </table>
 
-    <!-- مودال جزئیات بسته -->
     <div id="details-modal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h3>جزئیات بسته</h3>
-        <p id="details-text"></p>
+        <div id="details-text"></div>
+        <div id="mobile-actions" class="mobile-only">
+          <p class="ussd-code"></p>
+          <div class="buy-button-container"></div>
+        </div>
       </div>
     </div>
 
-    <!-- بخش کپی‌رایت -->
     <footer class="footer">
       <p>
         © تمامی حقوق برای بسته باز محفوظ است. ساخته شده با
@@ -87,7 +85,6 @@
       </p>
     </footer>
 
-    <!-- فایل جاوااسکریپت -->
     <script src="data.js"></script>
   </body>
 </html>
