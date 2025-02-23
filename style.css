@@ -1,192 +1,222 @@
+/* بارگذاری فونت‌های سفارشی */
 @font-face {
   font-family: "IRANYekanX";
   src: url("fonts/IRANYekanX-Regular.woff2") format("woff2"),
     url("fonts/IRANYekanX-Regular.woff") format("woff"),
     url("fonts/IRANYekanX-Regular.ttf") format("truetype");
-  font-display: swap;
+  font-display: swap; /* بارگذاری سریع فونت */
 }
 
+/* استایل برای بدنه صفحه */
 body {
-  direction: rtl;
-  font-family: "IRANYekanX", sans-serif;
-  text-align: center;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+  direction: rtl; /* راست‌چین کردن متن */
+  font-family: "IRANYekanX", sans-serif; /* فونت اصلی صفحه */
+  text-align: center; /* تنظیم متن به صورت مرکز */
+  background-color: #f8f9fa; /* پس‌زمینه روشن */
+  margin: 0; /* حذف فاصله از لبه‌ها */
+  padding: 0; /* حذف فاصله داخلی */
 }
 
+/* استایل برای عنوان اصلی سایت */
 .site-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-top: 10vh;
-  color: #007bff;
+  font-size: 2.5rem; /* اندازه فونت بزرگ */
+  font-weight: bold; /* ضخیم کردن فونت */
+  margin-top: 10vh; /* فاصله از بالای صفحه */
+  color: #007bff; /* رنگ آبی */
 }
 
+/* استایل برای زیرعنوان سایت */
 .site-subtitle {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  color: #555;
+  font-size: 1.2rem; /* اندازه فونت کوچکتر از عنوان */
+  margin-top: 10px; /* فاصله از بالای متن */
+  color: #555; /* رنگ خاکی برای متن */
 }
 
+/* استایل برای یادآوری‌ها و توضیحات */
 .note {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
-  text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  font-size: 1rem; /* اندازه فونت */
+  color: #555; /* رنگ خاکی */
+  margin-top: 10px; /* فاصله از بالا */
+  text-align: center; /* متن را در وسط صفحه قرار می‌دهد */
+  padding-left: 20px; /* فاصله داخلی سمت چپ */
+  padding-right: 20px; /* فاصله داخلی سمت راست */
 }
 
+/* استایل برای بخش فیلترها */
 .filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px auto;
-  width: 90%;
+  display: flex; /* نمایش فیلترها به صورت افقی */
+  flex-wrap: wrap; /* قابلیت جمع شدن فیلترها در صفحه‌های کوچک */
+  justify-content: center; /* تنظیم فیلترها در وسط */
+  gap: 10px; /* فاصله بین فیلترها */
+  margin: 20px auto; /* فاصله از بالا و پایین */
+  width: 90%; /* عرض فیلترها */
 }
 
+/* استایل برای فیلدهای انتخابگر در فیلترها */
 .filters select {
-  flex: 1;
-  min-width: 120px;
-  padding: 10px;
-  font-family: IranYekanX;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  flex: 1; /* فیلدها به طور مساوی فضای صفحه را پر کنند */
+  min-width: 120px; /* حداقل عرض فیلدها */
+  padding: 10px; /* فاصله داخلی فیلدها */
+  font-family: IranYekanX; /* فونت ایران یکان */
+  font-size: 1rem; /* اندازه فونت */
+  border: 1px solid #ddd; /* حاشیه ملایم برای فیلدها */
+  border-radius: 5px; /* گوشه‌های گرد */
 }
 
+/* استایل برای جدول بسته‌ها */
 table {
-  width: 100%;
-  max-width: 90%;
-  margin: 20px auto;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* عرض جدول ۱۰۰% */
+  max-width: 90%; /* حداکثر عرض ۹۰% */
+  margin: 20px auto; /* فاصله از بالا و پایین */
+  border-collapse: collapse; /* هم‌پوشانی خطوط جدول */
+  background: white; /* پس‌زمینه سفید */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* سایه ملایم اطراف جدول */
 }
 
+/* استایل برای سلول‌های جدول */
 th,
 td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-  font-size: 1rem;
+  border: 1px solid #ddd; /* حاشیه ملایم برای سلول‌ها */
+  padding: 10px; /* فاصله داخلی سلول‌ها */
+  text-align: center; /* متن در مرکز سلول‌ها */
+  font-size: 1rem; /* اندازه فونت */
 }
 
+/* استایل برای سربرگ جدول */
 th {
-  background-color: #007bff;
-  color: white;
+  background-color: #007bff; /* رنگ پس‌زمینه سربرگ */
+  color: white; /* رنگ سفید برای متن سربرگ */
 }
 
+/* استایل برای ردیف‌های زوج جدول */
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* پس‌زمینه ردیف‌های زوج */
 }
 
+/* استایل برای نام بسته‌ها (قابلیت کلیک) */
 .package-name {
-  cursor: pointer;
+  cursor: pointer; /* نشانگر موس به صورت دست */
 }
 
+/* استایل برای دکمه خرید */
 .buy-button {
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
+  background-color: red; /* پس‌زمینه قرمز */
+  color: white; /* رنگ متن سفید */
+  font-weight: bold; /* فونت ضخیم */
+  padding: 8px 12px; /* فاصله داخلی */
+  border: none; /* حذف حاشیه */
+  border-radius: 5px; /* گوشه‌های گرد */
+  cursor: pointer; /* نشانگر موس به صورت دست */
+  text-decoration: none; /* حذف خط زیر متن */
+  display: inline-block; /* نمایش به صورت بلوک داخلی */
 }
 
+/* استایل برای ردیف‌های مخصوص رایتل */
 .tr-raitel td {
-  color: white !important;
+  color: white !important; /* تغییر رنگ متن به سفید */
 }
 
+/* استایل فوتر صفحه */
 .footer {
-  color: #555;
-  padding: 10px;
-  text-align: center;
-  margin-top: 30px;
+  color: #555; /* رنگ خاکی */
+  padding: 10px; /* فاصله داخلی */
+  text-align: center; /* متن در وسط */
+  margin-top: 30px; /* فاصله از بالا */
 }
 
+/* استایل برای مودال (پنجره جزئیات بسته) */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
+  display: none; /* پیش‌فرض نمایش مودال خاموش است */
+  position: fixed; /* موقعیت ثابت در صفحه */
+  z-index: 100; /* لایه بالا برای مودال */
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%; /* عرض ۱۰۰% */
+  height: 100%; /* ارتفاع ۱۰۰% */
+  background-color: rgba(0, 0, 0, 0.5); /* پس‌زمینه تاریک */
 }
 
+/* استایل برای محتوای مودال */
 .modal-content {
-  background: white;
-  margin: 10% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
-  position: relative;
-  border-radius: 8px;
+  background: white; /* پس‌زمینه سفید */
+  margin: 10% auto; /* فاصله از بالا و پایین */
+  padding: 20px; /* فاصله داخلی */
+  width: 80%; /* عرض مودال */
+  max-width: 500px; /* حداکثر عرض مودال */
+  position: relative; /* موقعیت نسبی برای دکمه بستن */
+  border-radius: 8px; /* گوشه‌های گرد */
 }
 
+/* استایل برای عنوان مودال */
 .modal-content h3 {
-  margin-top: 0;
+  margin-top: 0; /* حذف فاصله بالای عنوان */
 }
 
+/* استایل برای دکمه بستن مودال */
 .close {
-  position: absolute;
+  position: absolute; /* موقعیت ثابت در بالا سمت راست */
   top: 10px;
   right: 20px;
-  font-size: 24px;
-  cursor: pointer;
+  font-size: 24px; /* اندازه بزرگ برای دکمه بستن */
+  cursor: pointer; /* نشانگر موس به صورت دست */
 }
 
+/* استایل برای نمایش محتوا فقط در موبایل */
 .mobile-only {
-  display: none;
+  display: none; /* پیش‌فرض مخفی است */
 }
 
+/* استایل برای نمایش محتوا فقط در دسکتاپ */
 .desktop-only {
-  display: table-cell;
+  display: table-cell; /* نمایش به صورت سلول جدول */
 }
 
+/* استایل برای صفحه‌های کوچکتر از 768px */
 @media (max-width: 768px) {
+  /* تغییر اندازه عنوان سایت در صفحات موبایل */
   .site-title {
     font-size: 2rem;
     margin-top: 10vh;
   }
 
+  /* تغییر اندازه زیرعنوان سایت */
   .site-subtitle {
     font-size: 1rem;
   }
 
+  /* استایل فیلترها در صفحات موبایل */
   .filters {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* نمایش فیلترها به صورت عمودی */
+    align-items: center; /* مرکز چین کردن فیلترها */
   }
 
   .filters select {
-    width: 100%;
+    width: 100%; /* عرض کامل برای فیلترها */
   }
 
+  /* تغییر اندازه فونت جدول در صفحات موبایل */
   table {
     font-size: 0.9rem;
   }
 
+  /* کاهش فاصله داخلی سلول‌ها */
   th,
   td {
     padding: 6px;
   }
 
+  /* استایل مودال در صفحه‌های موبایل */
   .modal-content {
     width: 90%;
     margin: 20% auto;
   }
 
+  /* مخفی کردن محتوای دسکتاپ در صفحات موبایل */
   .desktop-only {
     display: none;
   }
 
+  /* نمایش محتوای مخصوص موبایل */
   .mobile-only {
     display: block;
   }

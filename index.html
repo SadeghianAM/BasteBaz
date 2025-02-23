@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- عنوان سایت -->
     <h1 class="site-title">بسته باز</h1>
+
+    <!-- زیر عنوان سایت -->
     <p class="site-subtitle">
       همه بسته‌های اینترنتی اپراتورهای همراه ایران در یک نگاه
     </p>
 
+    <!-- یادآوری و توضیحات -->
     <p class="note">
       بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده
       شده‌اند.
     </p>
     <p class="note">برای مشاهده جزئیات بسته‌ها، روی نام بسته کلیک کنید.</p>
 
+    <!-- فیلترهای جستجو -->
     <div class="filters">
+      <!-- فیلتر اپراتور -->
       <select id="operator-filter">
         <option value="">اپراتور</option>
         <option value="همراه اول">همراه اول</option>
@@ -26,6 +32,7 @@
         <option value="رایتل">رایتل</option>
       </select>
 
+      <!-- فیلتر قیمت -->
       <select id="price-filter">
         <option value="">قیمت</option>
         <option value="5000">کمتر از ۱۰,۰۰۰ تومان</option>
@@ -33,6 +40,7 @@
         <option value="45000">بیشتر از ۳۰,۰۰۰ تومان</option>
       </select>
 
+      <!-- فیلتر مدت زمان -->
       <select id="duration-filter">
         <option value="">مدت</option>
         <option value="1">روزانه</option>
@@ -40,6 +48,7 @@
         <option value="30">ماهانه</option>
       </select>
 
+      <!-- فیلتر حجم -->
       <select id="data-filter">
         <option value="">حجم</option>
         <option value="1">1 گیگ</option>
@@ -48,7 +57,10 @@
       </select>
     </div>
 
+    <!-- عنوان جدول -->
     <h2>جدول بسته‌های اینترنتی</h2>
+
+    <!-- جدول بسته‌ها -->
     <table>
       <thead>
         <tr>
@@ -61,8 +73,10 @@
       <tbody id="package-table"></tbody>
     </table>
 
+    <!-- مودال جزئیات بسته -->
     <div id="details-modal" class="modal">
       <div class="modal-content">
+        <!-- دکمه بستن مودال -->
         <span class="close">&times;</span>
         <h3>جزئیات بسته</h3>
         <div id="details-text"></div>
@@ -73,6 +87,7 @@
       </div>
     </div>
 
+    <!-- فوتر سایت -->
     <footer class="footer">
       <p>
         © تمامی حقوق برای بسته باز محفوظ است. ساخته شده با
@@ -86,6 +101,7 @@
       </p>
     </footer>
 
+    <!-- فایل جاوا اسکریپت -->
     <script src="data.js"></script>
   </body>
 </html>
