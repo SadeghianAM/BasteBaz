@@ -1,9 +1,9 @@
 /* بارگذاری فونت‌های سفارشی */
 @font-face {
   font-family: "IRANYekanX";
-  src: url("fonts/IRANYekanX-Regular.woff2") format("woff2"),
-    url("fonts/IRANYekanX-Regular.woff") format("woff"),
-    url("fonts/IRANYekanX-Regular.ttf") format("truetype");
+  src: url("fonts/IRANYekanXFaNum-Regular.woff2") format("woff2"),
+    url("fonts/IRANYekanXFaNum-Regular.woff") format("woff"),
+    url("fonts/IRANYekanXFaNum-Regular.ttf") format("truetype");
   font-display: swap; /* بارگذاری سریع فونت */
 }
 
