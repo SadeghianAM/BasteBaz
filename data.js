@@ -33,7 +33,6 @@ const durationFilter = document.getElementById("duration-filter");
 const dataFilter = document.getElementById("data-filter");
 const modal = document.getElementById("details-modal");
 const closeBtn = modal.querySelector(".close");
-const retryContainer = document.getElementById("retry-container");
 let packages = [];
 let lastFocusedElement;
 
@@ -101,7 +100,8 @@ function showDetails(pkg) {
 }
 
 function renderError() {
-  if (retryContainer) retryContainer.remove();
+  const existing = document.getElementById("retry-container");
+  if (existing) existing.remove();
   const div = document.createElement("div");
   div.id = "retry-container";
   div.innerHTML = `
@@ -109,9 +109,7 @@ function renderError() {
     <button id="retry-btn" class="buy-button">تلاش مجدد</button>
   `;
   document.body.insertBefore(div, document.querySelector("footer"));
-  document
-    .getElementById("retry-btn")
-    .addEventListener("click", () => fetchData());
+  document.getElementById("retry-btn").addEventListener("click", fetchData);
 }
 
 function filterAndRender() {
@@ -142,10 +140,9 @@ function filterAndRender() {
       nameSpan.textContent = pkg.name;
       nameSpan.tabIndex = 0;
       nameSpan.addEventListener("click", () => showDetails(pkg));
-      nameSpan.addEventListener(
-        "keydown",
-        (e) => e.key === "Enter" && showDetails(pkg)
-      );
+      nameSpan.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") showDetails(pkg);
+      });
       nameCell.appendChild(nameSpan);
 
       // Other cells
@@ -169,7 +166,6 @@ function filterAndRender() {
 
 const debouncedFilter = debounce(filterAndRender, 200);
 
-// Fetch data
 function fetchData() {
   fetch("packages.json")
     .then((res) => {

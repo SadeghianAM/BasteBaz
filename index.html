@@ -3,29 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>بسته یاب</title>
+    <title>بسته‌یاب</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1 class="site-title">بسته یاب</h1>
+      <h1 class="site-title">بسته‌یاب</h1>
       <p class="site-subtitle">
         همه بسته‌های اینترنتی اپراتورهای همراه ایران در یک نگاه
       </p>
       <p class="note">
-        بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده
-        شده‌اند.
+        بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده شده‌اند.
       </p>
-      <p class="note">برای مشاهده جزئیات بسته‌ها، روی نام بسته کلیک کنید.</p>
     </header>
 
     <main>
       <section class="filters-section">
-        <form
-          id="filters-form"
-          class="filters"
-          onsubmit="event.preventDefault(); filterPackages();"
-        >
+        <form id="filters-form" class="filters" onsubmit="event.preventDefault(); filterAndRender();">
           <select id="operator-filter" aria-label="فیلتر اپراتور">
             <option value="">اپراتور</option>
             <option value="همراه اول">همراه اول</option>
@@ -54,11 +48,14 @@
             <option value="10">10 گیگ</option>
           </select>
 
-          <button type="submit" style="display: none">اعمال فیلتر</button>
+          <button type="submit" style="display:none;">اعمال فیلتر</button>
         </form>
       </section>
 
       <section class="packages-section">
+        <div class="info-callout" role="alert">
+          <strong>💡 نکته:</strong> برای مشاهده جزئیات بسته‌ها، روی <u>نام بسته</u> کلیک کنید.
+        </div>
         <h2>جدول بسته‌های اینترنتی</h2>
         <table>
           <thead>
@@ -76,9 +73,7 @@
 
     <dialog id="details-modal" class="modal" aria-labelledby="modal-title">
       <div class="modal-content">
-        <span class="close" role="button" tabindex="0" aria-label="بستن"
-          >&times;</span
-        >
+        <span class="close" role="button" tabindex="0" aria-label="بستن">&times;</span>
         <h3 id="modal-title">جزئیات بسته</h3>
         <div id="details-text"></div>
         <div id="mobile-actions" class="mobile-only">
@@ -90,14 +85,7 @@
 
     <footer class="footer">
       <p>
-        © تمامی حقوق برای بسته باز محفوظ است. ساخته شده با
-        <span style="color: red">❤</span> توسط :
-        <a
-          href="https://github.com/SadeghianAM/BasteBaz"
-          target="_blank"
-          style="color: red"
-          >SadeghianAM</a
-        >
+        © تمامی حقوق برای بسته‌یاب محفوظ است.
       </p>
     </footer>
 

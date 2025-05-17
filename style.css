@@ -71,6 +71,19 @@ body {
   border-radius: var(--border-radius);
 }
 
+/* استایل برای callout */
+.info-callout {
+  background-color: #e0f7fa;
+  border-left: 4px solid var(--primary-color);
+  color: #005b5f;
+  padding: 12px 16px;
+  margin: 0 auto 16px;
+  max-width: 90%;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 /* استایل برای جدول بسته‌ها */
 table {
   width: 100%;
@@ -148,12 +161,10 @@ dialog.modal {
   overflow: hidden;
 }
 
-/* پوشش تاریک پشت دیالوگ */
 dialog.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* استایل محتوای مودال */
 .modal-content {
   background: white;
   padding: 20px;
@@ -163,14 +174,12 @@ dialog.modal::backdrop {
   position: relative;
 }
 
-/* تیتر مودال */
 .modal-content h3 {
   font-size: 1.4rem;
   margin-bottom: 12px;
   color: var(--primary-color);
 }
 
-/* متن توضیحات */
 .modal-content #details-text {
   font-size: 1rem;
   color: var(--text-color);
@@ -178,7 +187,6 @@ dialog.modal::backdrop {
   line-height: 1.5;
 }
 
-/* دکمه خرید در مودال موبایل */
 .modal-content .buy-button {
   display: inline-block;
   margin-top: 12px;
@@ -186,7 +194,6 @@ dialog.modal::backdrop {
   font-size: 1rem;
 }
 
-/* دکمه بستن مودال */
 .close {
   position: absolute;
   top: 8px;
@@ -199,7 +206,6 @@ dialog.modal::backdrop {
   padding: 2px 6px;
 }
 
-/* حالات فوکوس برای دسترسی‌پذیری */
 .package-name:focus,
 .buy-button:focus,
 .close:focus {
@@ -207,7 +213,6 @@ dialog.modal::backdrop {
   outline-offset: 2px;
 }
 
-/* نمایش محتوا فقط در موبایل و دسکتاپ */
 .mobile-only {
   display: none;
 }
