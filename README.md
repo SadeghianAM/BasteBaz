@@ -1,39 +1,37 @@
-# Baste Baz (بسته باز)
+# بسته‌یاب 📶
 
-BasteBaz is a simple website that displays all mobile carrier internet packages at a glance. Users can filter packages based on the carrier, price, duration, and data volume and view more details about the packages. This project covers all mobile carriers in Iran.
+ابزاری سریع و ساده برای مشاهده، مقایسه و انتخاب بسته‌های اینترنتی اپراتورهای تلفن همراه ایران — همه در یک نگاه!
 
-## Features
-
-- **Package Filtering**: Users can filter the packages based on the following criteria:
-
-  - Carrier (Hamrah Aval, Irancell, Rightel)
-  - Price
-  - Duration (Daily, Weekly, Monthly)
-  - Data Volume (1 GB, 5 GB, 10 GB)
-
-- **Package Table**: All packages are displayed in a table with details including the package name, carrier, duration, price, USSD code, purchase link, and details.
-
-- **Package Details**: By clicking on the "View More Details" button, users can view additional information about each package.
-
-- **Carrier Colors**: Packages are displayed in different colors based on the carrier:
-
-  - Hamrah Aval: #54C5D0
-  - Irancell: #FEBE10
-  - Rightel: #941063
-
-- **Responsive Design**: The website is responsive and works well on mobile and tablet devices.
-
-## Installation and Usage
-
-You can access the live project at the following URL: [https://sadeghianam.github.io/BasteBaz/](https://sadeghianam.github.io/BasteBaz/).
-
-## Capabilities
-
-- Filter packages based on various criteria
-- Display package details in a modal
-- Responsive design for mobile-friendly use
-- Covers all mobile carriers in Iran
+🌐 [مشاهده آنلاین بسته‌یاب](https://sadeghianam.github.io/BasteYab/)
 
 ---
 
-If you have any questions or need help, feel free to open an issue!
+## ✨ معرفی
+
+«بسته‌یاب» یک وب‌اپلیکیشن ساده، سبک و قابل‌استفاده بر روی موبایل و دسکتاپ است که به کاربران امکان می‌دهد بسته‌های اینترنتی اپراتورهای همراه اول، ایرانسل و رایتل را یکجا مشاهده، فیلتر و مقایسه کنند.
+
+بدون نیاز به نصب، بدون ثبت‌نام، فقط باز کنید و بسته‌تان را انتخاب کنید!
+
+---
+
+## 🔍 امکانات
+
+- فیلتر پیشرفته بر اساس اپراتور، قیمت، مدت و حجم بسته‌ها
+- نمایش اطلاعات کامل از جمله کد دستوری و لینک خرید
+- طراحی واکنش‌گرا مناسب موبایل و دسکتاپ
+- پنجره جزئیات با دسترسی آسان
+- قابلیت استفاده کاملاً آفلاین (پس از بارگذاری اولیه)
+- رابط کاربری ساده و سریع
+- بهینه‌سازی تجربه کاربری با دسترس‌پذیری بالا (A11y)
+
+---
+
+## 🤝 مشارکت در توسعه
+
+اگر علاقه‌مند به بهبود این پروژه هستید، خوشحال می‌شویم که در توسعه‌ی آن مشارکت کنید!
+
+📁 کد منبع در GitHub در دسترس است:
+[github.com/SadeghianAM/BasteYab](https://github.com/SadeghianAM/BasteYab)
+
+✅ ایده‌ای دارید؟ اشکالی پیدا کردید؟
+لطفاً Issue باز کنید یا Pull Request ارسال کنید.
