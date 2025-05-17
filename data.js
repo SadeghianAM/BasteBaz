@@ -1,133 +1,167 @@
+// data.js
+
 document.addEventListener("DOMContentLoaded", function () {
-  // بارگذاری داده‌ها از فایل JSON
   fetch("packages.json")
     .then((response) => response.json())
     .then((packages) => {
-      const operatorColors = {
-        "همراه اول": "#54C5D0",
-        ایرانسل: "#FEBE10",
-        رایتل: "#941063",
-      };
-
       const tableBody = document.getElementById("package-table");
       const operatorFilter = document.getElementById("operator-filter");
       const priceFilter = document.getElementById("price-filter");
       const durationFilter = document.getElementById("duration-filter");
       const dataFilter = document.getElementById("data-filter");
+      const modal = document.getElementById("details-modal");
+      const closeBtn = modal.querySelector(".close");
+      let lastFocusedElement;
 
-      function showDetails(pkg) {
-        const modal = document.getElementById("details-modal");
-        const detailsText = document.getElementById("details-text");
-        const mobileActions = document.getElementById("mobile-actions");
-        const ussdCode = mobileActions.querySelector(".ussd-code");
-        const buyButtonContainer = mobileActions.querySelector(
-          ".buy-button-container"
+      // مدیریت تله‌گذاری فوکوس داخل مودال
+      function trapFocus(e) {
+        const focusable = modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
 
-        // نمایش جزئیات
-        detailsText.textContent = pkg.details;
-
-        // نمایش اطلاعات اضافی در نسخه موبایل
-        if (window.innerWidth <= 768) {
-          ussdCode.innerHTML = `کد دستوری: <bdo dir="ltr">${pkg.ussd}</bdo>`;
-          buyButtonContainer.innerHTML = `<a href="${pkg.link}" class="buy-button">خرید</a>`;
-        } else {
-          ussdCode.innerHTML = "";
-          buyButtonContainer.innerHTML = "";
-        }
-
-        modal.style.display = "block";
-      }
-
-      function filterPackages() {
-        const operator = operatorFilter.value;
-        const price = priceFilter.value;
-        const duration = durationFilter.value;
-        const data = dataFilter.value;
-
-        const filteredPackages = packages.filter((pkg) => {
-          const pkgPrice = parseInt(pkg.price.replace(/[^0-9]/g, ""));
-          const matchesOperator = operator ? pkg.operator === operator : true;
-          const matchesPrice =
-            price === "5000"
-              ? pkgPrice < 10000
-              : price === "20000"
-              ? pkgPrice >= 10000 && pkgPrice <= 30000
-              : price === "45000"
-              ? pkgPrice > 30000
-              : true;
-          const matchesDuration = duration ? pkg.duration === duration : true;
-          const matchesData = data ? pkg.data === parseInt(data) : true;
-
-          return (
-            matchesOperator && matchesPrice && matchesDuration && matchesData
-          );
-        });
-
-        tableBody.innerHTML = "";
-
-        filteredPackages.forEach((pkg) => {
-          const row = document.createElement("tr");
-          row.style.backgroundColor = operatorColors[pkg.operator] || "#ffffff";
-
-          if (pkg.operator === "رایتل") {
-            row.classList.add("tr-raitel");
+        if (e.key === "Tab") {
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
           }
-
-          // ایجاد سلول نام بسته با قابلیت کلیک
-          const nameCell = document.createElement("td");
-          const nameSpan = document.createElement("span");
-          nameSpan.className = "package-name";
-          nameSpan.textContent = pkg.name;
-          nameSpan.onclick = () => showDetails(pkg);
-          nameCell.appendChild(nameSpan);
-
-          // اضافه کردن سایر سلول‌ها
-          const priceCell = document.createElement("td");
-          priceCell.textContent = pkg.price;
-
-          const ussdCell = document.createElement("td");
-          ussdCell.className = "desktop-only";
-          ussdCell.innerHTML = `<bdo dir="ltr">${pkg.ussd}</bdo>`;
-
-          const linkCell = document.createElement("td");
-          linkCell.className = "desktop-only";
-          linkCell.innerHTML = `<a href="${pkg.link}" class="buy-button">خرید</a>`;
-
-          // اضافه کردن همه سلول‌ها به ردیف
-          row.appendChild(nameCell);
-          row.appendChild(priceCell);
-          row.appendChild(ussdCell);
-          row.appendChild(linkCell);
-
-          tableBody.appendChild(row);
-        });
+        } else if (e.key === "Escape") {
+          closeModal();
+        }
       }
 
-      // اضافه کردن event listeners
-      operatorFilter.addEventListener("change", filterPackages);
-      priceFilter.addEventListener("change", filterPackages);
-      durationFilter.addEventListener("change", filterPackages);
-      dataFilter.addEventListener("change", filterPackages);
+      // باز و بسته کردن مودال با حفظ فوکوس قبلی
+      function openModal() {
+        lastFocusedElement = document.activeElement;
+        modal.showModal();
+        closeBtn.focus();
+        modal.addEventListener("keydown", trapFocus);
+      }
 
-      // بستن مودال
-      document
-        .querySelector(".modal .close")
-        .addEventListener("click", function () {
-          document.getElementById("details-modal").style.display = "none";
-        });
+      function closeModal() {
+        modal.close();
+        modal.removeEventListener("keydown", trapFocus);
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
 
-      window.addEventListener("click", function (event) {
-        const modal = document.getElementById("details-modal");
-        if (event.target === modal) {
-          modal.style.display = "none";
+      // دکمه بستن مودال
+      closeBtn.addEventListener("click", closeModal);
+      closeBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          closeModal();
         }
       });
 
-      // نمایش اولیه بسته‌ها
+      // نمایش جزئیات و باز کردن مودال
+      function showDetails(pkg) {
+        document.getElementById("details-text").textContent = pkg.details;
+        const mobileActions = document.getElementById("mobile-actions");
+        if (window.innerWidth <= 768) {
+          mobileActions.querySelector(
+            ".ussd-code"
+          ).innerHTML = `کد دستوری: <bdo dir="ltr">${pkg.ussd}</bdo>`;
+          mobileActions.querySelector(
+            ".buy-button-container"
+          ).innerHTML = `<a href="${pkg.link}" class="buy-button" tabindex="0">خرید</a>`;
+        } else {
+          mobileActions.querySelector(".ussd-code").innerHTML = "";
+          mobileActions.querySelector(".buy-button-container").innerHTML = "";
+        }
+        openModal();
+      }
+
+      // فیلتر و رندر جدول
+      function filterPackages() {
+        const op = operatorFilter.value;
+        const pr = priceFilter.value;
+        const du = durationFilter.value;
+        const da = dataFilter.value;
+        const fragment = document.createDocumentFragment();
+
+        tableBody.innerHTML = "";
+        packages
+          .filter((pkg) => {
+            const priceNum = parseInt(pkg.price.replace(/[^0-9]/g, ""));
+            const okOp = op ? pkg.operator === op : true;
+            const okPr =
+              pr === "5000"
+                ? priceNum < 10000
+                : pr === "20000"
+                ? priceNum >= 10000 && priceNum <= 30000
+                : pr === "45000"
+                ? priceNum > 30000
+                : true;
+            const okDu = du ? pkg.duration === du : true;
+            const okDa = da ? pkg.data === parseInt(da) : true;
+            return okOp && okPr && okDu && okDa;
+          })
+          .forEach((pkg) => {
+            const row = document.createElement("tr");
+            row.classList.add(`operator-${pkg.operator.replace(/\s+/g, "")}`);
+
+            // نام بسته کلیک‌پذیر و کیبوردپذیر
+            const nameCell = document.createElement("td");
+            const nameSpan = document.createElement("span");
+            nameSpan.className = "package-name";
+            nameSpan.textContent = pkg.name;
+            nameSpan.tabIndex = 0;
+            nameSpan.addEventListener("click", () => showDetails(pkg));
+            nameSpan.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") showDetails(pkg);
+            });
+            nameCell.appendChild(nameSpan);
+
+            const priceCell = document.createElement("td");
+            priceCell.textContent = pkg.price;
+
+            const ussdCell = document.createElement("td");
+            ussdCell.className = "desktop-only";
+            ussdCell.innerHTML = `<bdo dir="ltr">${pkg.ussd}</bdo>`;
+
+            const linkCell = document.createElement("td");
+            linkCell.className = "desktop-only";
+            linkCell.innerHTML = `<a href="${pkg.link}" class="buy-button" tabindex="0">خرید</a>`;
+
+            [nameCell, priceCell, ussdCell, linkCell].forEach((c) =>
+              row.appendChild(c)
+            );
+            fragment.appendChild(row);
+          });
+
+        tableBody.appendChild(fragment);
+      }
+
+      // لیسنرهای فیلتر
+      [operatorFilter, priceFilter, durationFilter, dataFilter].forEach((el) =>
+        el.addEventListener("change", filterPackages)
+      );
+
+      // بستن مودال با کلیک بیرون
+      modal.addEventListener("click", (e) => {
+        const r = modal.getBoundingClientRect();
+        if (
+          e.clientX < r.left ||
+          e.clientX > r.right ||
+          e.clientY < r.top ||
+          e.clientY > r.bottom
+        ) {
+          closeModal();
+        }
+      });
+
+      // رندر اولیه
       filterPackages();
     })
-    .catch((error) => {
-      console.error("Error loading packages data:", error);
+    .catch((err) => {
+      console.error("Error loading packages:", err);
     });
 });

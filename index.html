@@ -7,71 +7,86 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="site-title">بسته باز</h1>
-    <p class="site-subtitle">
-      همه بسته‌های اینترنتی اپراتورهای همراه ایران در یک نگاه
-    </p>
+    <header>
+      <h1 class="site-title">بسته باز</h1>
+      <p class="site-subtitle">
+        همه بسته‌های اینترنتی اپراتورهای همراه ایران در یک نگاه
+      </p>
+      <p class="note">
+        بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده
+        شده‌اند.
+      </p>
+      <p class="note">برای مشاهده جزئیات بسته‌ها، روی نام بسته کلیک کنید.</p>
+    </header>
 
-    <p class="note">
-      بسته‌ها به تفکیک اپراتورها با توجه به رنگ‌های سازمانی‌شان نمایش داده
-      شده‌اند.
-    </p>
-    <p class="note">برای مشاهده جزئیات بسته‌ها، روی نام بسته کلیک کنید.</p>
+    <main>
+      <section class="filters-section">
+        <form
+          id="filters-form"
+          class="filters"
+          onsubmit="event.preventDefault(); filterPackages();"
+        >
+          <select id="operator-filter" aria-label="فیلتر اپراتور">
+            <option value="">اپراتور</option>
+            <option value="همراه اول">همراه اول</option>
+            <option value="ایرانسل">ایرانسل</option>
+            <option value="رایتل">رایتل</option>
+          </select>
 
-    <div class="filters">
-      <select id="operator-filter">
-        <option value="">اپراتور</option>
-        <option value="همراه اول">همراه اول</option>
-        <option value="ایرانسل">ایرانسل</option>
-        <option value="رایتل">رایتل</option>
-      </select>
+          <select id="price-filter" aria-label="فیلتر قیمت">
+            <option value="">قیمت</option>
+            <option value="5000">کمتر از ۱۰,۰۰۰ تومان</option>
+            <option value="20000">بین ۱۰,۰۰۰ تا ۳۰,۰۰۰ تومان</option>
+            <option value="45000">بیشتر از ۳۰,۰۰۰ تومان</option>
+          </select>
 
-      <select id="price-filter">
-        <option value="">قیمت</option>
-        <option value="5000">کمتر از ۱۰,۰۰۰ تومان</option>
-        <option value="20000">بین ۱۰,۰۰۰ تا ۳۰,۰۰۰ تومان</option>
-        <option value="45000">بیشتر از ۳۰,۰۰۰ تومان</option>
-      </select>
+          <select id="duration-filter" aria-label="فیلتر مدت">
+            <option value="">مدت</option>
+            <option value="روزانه">روزانه</option>
+            <option value="هفتگی">هفتگی</option>
+            <option value="ماهانه">ماهانه</option>
+          </select>
 
-      <select id="duration-filter">
-        <option value="">مدت</option>
-        <option value="روزانه">روزانه</option>
-        <option value="هفتگی">هفتگی</option>
-        <option value="ماهانه">ماهانه</option>
-      </select>
+          <select id="data-filter" aria-label="فیلتر حجم">
+            <option value="">حجم</option>
+            <option value="1">1 گیگ</option>
+            <option value="5">5 گیگ</option>
+            <option value="10">10 گیگ</option>
+          </select>
 
-      <select id="data-filter">
-        <option value="">حجم</option>
-        <option value="1">1 گیگ</option>
-        <option value="5">5 گیگ</option>
-        <option value="10">10 گیگ</option>
-      </select>
-    </div>
+          <button type="submit" style="display: none">اعمال فیلتر</button>
+        </form>
+      </section>
 
-    <h2>جدول بسته‌های اینترنتی</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>نام بسته</th>
-          <th>قیمت</th>
-          <th class="desktop-only">کد دستوری</th>
-          <th class="desktop-only">لینک خرید</th>
-        </tr>
-      </thead>
-      <tbody id="package-table"></tbody>
-    </table>
+      <section class="packages-section">
+        <h2>جدول بسته‌های اینترنتی</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">نام بسته</th>
+              <th scope="col">قیمت</th>
+              <th scope="col" class="desktop-only">کد دستوری</th>
+              <th scope="col" class="desktop-only">لینک خرید</th>
+            </tr>
+          </thead>
+          <tbody id="package-table"></tbody>
+        </table>
+      </section>
+    </main>
 
-    <div id="details-modal" class="modal">
+    <dialog id="details-modal" class="modal" aria-labelledby="modal-title">
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>جزئیات بسته</h3>
+        <span class="close" role="button" tabindex="0" aria-label="بستن"
+          >&times;</span
+        >
+        <h3 id="modal-title">جزئیات بسته</h3>
         <div id="details-text"></div>
         <div id="mobile-actions" class="mobile-only">
           <p class="ussd-code"></p>
           <div class="buy-button-container"></div>
         </div>
       </div>
-    </div>
+    </dialog>
 
     <footer class="footer">
       <p>
@@ -86,6 +101,6 @@
       </p>
     </footer>
 
-    <script src="data.js"></script>
+    <script src="data.js" type="module"></script>
   </body>
 </html>
