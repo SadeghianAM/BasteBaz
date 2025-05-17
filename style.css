@@ -213,6 +213,7 @@ dialog.modal::backdrop {
   outline-offset: 2px;
 }
 
+/* حالت نمایش بر اساس دستگاه */
 .mobile-only {
   display: none;
 }
@@ -220,6 +221,7 @@ dialog.modal::backdrop {
   display: table-cell;
 }
 
+/* تنظیمات واکنشگرا برای موبایل */
 @media (max-width: 768px) {
   .site-title {
     font-size: 2rem;
@@ -267,5 +269,17 @@ dialog.modal::backdrop {
   table th:nth-child(2),
   table td:nth-child(2) {
     width: 40%;
+  }
+
+  /* هماهنگ‌سازی callout با جدول */
+  .info-callout {
+    max-width: 95%;
+    margin: 0 auto 16px;
+    padding: 12px 16px;
+  }
+
+  /* پدینگ کلی برای main (اختیاری برای یکنواختی) */
+  main {
+    padding: 0 16px;
   }
 }
